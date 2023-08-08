@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulating Gift Selection</title>
+    <script>
+        function simulateSelection() {
+            var options = {{ options | tojson }};
+
+            var optionIndex = 0;
+            var interval1 = setInterval(function () {
+                if (optionIndex < options.length) {
+                    document.getElementById("gift-option").innerHTML = options[optionIndex];
+                    optionIndex++;
+                } else {
+                    clearInterval(interval1);
+                    setTimeout(function () {
+                        document.getElementById("gift-option").innerHTML = "Your gift is:... a massage";
+                    }, 4000);
+                }
+            }, 300);
+        }
+    </script>
+</head>
+<body>
+    <h1>Simulating Gift Selection</h1>
+    <p>Happy Birthday Dom! You deserve the best, so that's why I created a list of things I think you would like. Your birthday gift is going to be one of those options. I hope you like it!</p>
+    <p>Press the button to simulate gift selection:</p>
+    <button onclick="simulateSelection()">Simulate</button>
+    <p id="gift-option"></p>
+</body>
+</html>
